@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Weather Admin Dashboard</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="" crossorigin="" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="light">
+  <div id="app" class="app-grid">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo">WB</div>
+        <h1>WeatherBox</h1>
+      </div>
+      <nav class="menu">
+        <button class="menu-btn active" data-panel="map">Map</button>
+        <button class="menu-btn" data-panel="widgets">Widgets</button>
+        <button class="menu-btn" data-panel="alerts">Alerts</button>
+        <button class="menu-btn" data-panel="settings">Settings</button>
+      </nav>
+      <div class="sidebar-footer">
+        <small>Admin</small>
+        <button id="themeToggle" class="icon-btn">🌗</button>
+      </div>
+    </aside>
+
+    <header class="topbar">
+      <div class="search">
+        <input id="searchInput" placeholder="Search city or lat,lng — e.g. Paris or 48.85,2.35" />
+        <button id="searchBtn" class="btn">Go</button>
+      </div>
+      <div class="top-actions">
+        <button id="refreshBtn" class="btn primary">Refresh</button>
+        <div class="chip flappy" id="statusChip">LIVE</div>
+      </div>
+    </header>
+
+    <main class="main">
+      <section id="panel-map" class="panel active">
+        <div id="map" class="map"></div>
+      </section>
+
+      <section id="panel-widgets" class="panel">
+        <div class="widgets">
+          <div class="card flappy">
+            <h3>Current Weather</h3>
+            <div id="currentWeather" class="weather-panel">--</div>
+          </div>
+
+          <div class="card">
+            <h3>5-Day Forecast</h3>
+            <div id="forecast" class="forecast-row">--</div>
+          </div>
+
+          <div class="card">
+            <h3>Activity / Alerts</h3>
+            <ul id="alerts" class="alerts-list"></ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="panel-alerts" class="panel">
+        <div class="card large">
+          <h3>Weather Alerts</h3>
+          <div id="alertsMap" class="minimap">Open to show alert markers</div>
+        </div>
+      </section>
+
+      <section id="panel-settings" class="panel">
+        <div class="card">
+          <h3>Settings</h3>
+          <div class="form-row">
+            <label>Weather tiles</label>
+            <select id="tileSelect">
+              <option value="rainviewer">RainViewer (precip)</option>
+              <option value="none">No tiles</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label>Animation</label>
+            <button id="toggleFlap" class="btn">Toggle Flappy</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <aside class="rightbar">
+      <div class="card small">
+        <h3>Quick Stats</h3>
+        <div class="stats">
+          <div class="stat"><div id="statTemp">--°C</div><small>Temperature</small></div>
+          <div class="stat"><div id="statWind">-- m/s</div><small>Wind</small></div>
+          <div class="stat"><div id="statHumidity">--%</div><small>Humidity</small></div>
+        </div>
+      </div>
+
+      <div class="card small flappy">
+        <h3>Clock</h3>
+        <div id="clock">--:--:--</div>
+      </div>
+
+      <div class="card small">
+        <h3>Controls</h3>
+        <div class="controls">
+          <button id="locateBtn" class="btn">My Location</button>
+          <button id="togglePrecip" class="btn">Toggle Precip</button>
+        </div>
+      </div>
+    </aside>
+
+    <footer class="footer">© WeatherBox — Demo</footer>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="js/map.js" type="module"></script>
+  <script src="js/weather.js" type="module"></script>
+  <script src="js/ui.js" type="module"></script>
+  <script src="js/app.js" type="module"></script>
+</body>
+</html>
